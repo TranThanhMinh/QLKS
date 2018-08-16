@@ -49,7 +49,7 @@
 			
 			
 			                <li>
-			                  <a href="dsDichVu"><i class="fa fa-car fa-lg"></i> Dịch vụ </a>
+			                  <a href="#"><i class="fa fa-car fa-lg"></i> Dịch vụ </a>
 			                </li>
 			                
 			                 <li>
@@ -70,15 +70,19 @@
     </div>
     <div class="col-sm-10">
      <div>
-     <h4>Danh sách Phòng</h4></div>    
+     <h4>Danh sách dịch vụ</h4></div>    
      <div id="sizetext" >
-      <form action="insertPhong" method="post" id="save">    
+      <form action="insertDichVu" method="post" id="save">    
       <div class="row">
 	      
 		      <div class="col-sm-3 col-xs-12">
 			      	 <div class="form-group">
-			      	<label>Mã phòng:</label>
-			      	<input type ="text" name="maphong" value='${phong.getMaPhong()}' ></input>
+			      	<label>Mã dịch vụ:</label>
+			      	<input type ="text" name="madv" value='${dv.getMaDV()}' ></input>
+			      	</div>
+			      		<div class="form-group">
+			      	<label>Tên dịch vụ:</label>
+			      	<input type ="text" name="tendv" value='${dv.getTenDV()}'></input>
 			      	</div>
 		      </div>
 	    
@@ -86,19 +90,29 @@
 	      	<div class="col-sm-3 col-xs-12">
 			      	
 			      	<div class="form-group">
-			      	<label>Loại phòng:</label>
-			      	<input type ="text" name="loaiphong" value='${phong.getLoaiPhong()}'></input>
+			      	<label>Giá dịch vụ:</label>
+			      	<input type ="text" name="giadv" value='${dv.getGiaDV()}'></input>
+			      	</div>
+			      		<div class="form-group">
+			      	<label>Đơn vị tính:</label>
+			      	<input type ="text" name="dvt" value='${dv.getDVT()}'></input>
 			      	</div>
 		      </div>
-	  
-      	
-	      <div class="col-sm-3 col-xs-12">
+	 
+		   <div class="col-sm-3 col-xs-12">
 			      	
 			      	<div class="form-group">
-			      	<label>Giá phòng:</label>
-			      	<input type ="number" name="giaphong" value='${phong.getGiaPhong()}'></input>
+			      	<label>Nhân viên:</label>			      	
+			        <select id="selectBox" class="selectpicker col" value='${dv.getDVT()}' onchange="changeFunc();">
+			          <c:forEach items="${dsNhanVien}" var="p" >
+						  <option name='${p.getMaNV()}' >${p.getMaNV()} - ${p.getHoTenNV()}</option>
+					 </c:forEach>
+					</select>
 			      	</div>
-		      </div>
+			      	<div>
+			      		<input type ="hidden" id="nv" name="tennv" value='${ma}'></input>
+			      	</div>
+		 </div>
 		
       </div>
        
@@ -107,27 +121,34 @@
       </form>    
       </div>
       <div></br>
+     
+      
        <input class="form-control" id="myInput" type="text" placeholder="Tìm theo mã, loại, giá phòng....">
    		 <br>
-		    <table class="table table-bordered" >
-		       <tr>
-		          <th>Mã Phòng</th>
-		          <th>Loại Phòng</th>
-		          <th>Giá Phòng</th>
+		    <table id="table" class="table table-bordered" >
+		       <tr>		      
+		          <th>Mã dịch vụ</th>
+		          <th>Tên dịch vụ</th>
+		          <th>Giá dịch vụ</th>
+		          <th>Nhân viên</th>
+		           <th>đơn vị tính</th>
 		          <th>Sửa</th>
 		          <th>Xóa</th>
 		       </tr>
-		       <c:forEach items="${dsPhong}" var="p" >
+		       <c:forEach items="${dsDichVu}" var="p" >
 		        <tbody id="myTable">
 		          <tr>
-		             <td>${p.getMaPhong()}</td>
-		             <td>${p.getLoaiPhong()}</td>
-		             <td>${p.getGiaPhong()}</td>
+		             <td >${p.getMaDV()}</td>
+		             <td >${p.getTenDV()}</td>
+		             <td >${p.getGiaDV()}</td>
+		             <td >${p.getTenNV()}</td>
+		             <td >${p.getDVT()}</td>
 		             <td>
-		                <a class="fa fa-edit" href="updatePhong?action=edit&maphong=${p.getMaPhong()}"></a>
+		            
+		                <a class="fa fa-edit" href="updatePhong?action=editDV&madv=${p.getMaDV()}"></a>
 		             </td>
 		             <td>
-		                <a class="fa fa-remove" href="Delete?action=editP&maphong=${p.getMaPhong()}" "></a>
+		                <a class="fa fa-remove" href="Delete?action=editDV&madv=${p.getMaDV()}"></a>
 		             </td>
 		          </tr>
 		          </tbody>
@@ -140,8 +161,17 @@
     
     
   
+<script type="text/javascript">
+	   function changeFunc() {
+	    var selectBox = document.getElementById("selectBox");
+	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	    document.getElementById("nv").value=selectedValue;
+	   }
+
+ </script>
 
  <script>
+
  $(document).ready(function() {
 	 
      //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này

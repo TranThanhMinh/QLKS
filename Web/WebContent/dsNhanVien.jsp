@@ -49,7 +49,7 @@
 			
 			
 			                <li>
-			                  <a href="#"><i class="fa fa-car fa-lg"></i> Dịch vụ </a>
+			                  <a href="dsDichVu"><i class="fa fa-car fa-lg"></i> Dịch vụ </a>
 			                </li>
 			                
 			                 <li>
@@ -111,12 +111,11 @@
 				   <label>Số điện thoại:</label>
 				     <input type ="text"  name="sdt" value='${nv.getSoDT()}'></input>
 	      		</div>
-	      		 <div class="form-group">
-				   <label">Chức vụ:</label>
-				   	<input type ="text" name="cv" value='${nv.getChucVu()}'></input>	     
-	  			</div>
-	  			
-	  			
+	      		<div class="form-group">
+				   <label>Chức vụ:</label>
+				     <input type ="text"  name="cv" value='${nv.getChucVu()}'></input>
+	      		</div>
+	      		
 	  			
 			  </div>
 			   
