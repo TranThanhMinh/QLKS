@@ -1,6 +1,7 @@
 package view;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -64,6 +65,28 @@ public class updatePhong extends HttpServlet {
 					 request.setAttribute("name", "Sửa");
 					 request.setAttribute("disabled", "disabled");
 			            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsKhachHang.jsp");
+		                dispatcher.forward(request, response); 
+				}
+			}
+		}else if(action.equals("editDV")) {
+			String maphong =request.getParameter("madv");	
+			for(DichVu p:new dsDichVu().list) {		
+				if(maphong.equals(p.getMaDV())) {	
+					new dsNhanVien().list.remove(p);
+					 request.setAttribute("dsDichVu", new dsDichVu().list);
+					 List<NhanVien> list_=new ArrayList<>();
+					 NhanVien nv = new NhanVien();
+					 nv.setMaNV(p.getMaNV());
+					 nv.setHoTenNV(p.getTenNV());
+					 list_.add(nv);
+					 list_.addAll(new dsNhanVien().list);
+					
+					 request.setAttribute("dsNhanVien", list_ );
+					 request.setAttribute("dv", p);
+					 request.setAttribute("ma", p.getMaNV()+" - "+p.getTenNV());
+					 request.setAttribute("name", "Sửa");
+					
+			            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsDichVu.jsp");
 		                dispatcher.forward(request, response); 
 				}
 			}
