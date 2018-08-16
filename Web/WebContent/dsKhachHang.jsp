@@ -23,45 +23,54 @@
  
     <div class="row">
     <div class="col-sm-2 bac">
-			    <div class="nav-side-menu">
-			    <div class="brand">Quản lý khách sạn</div>
+		 <div class="nav-side-menu">
+			   <div class="brand">Quản lý khách sạn</div>
 			    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 			  
 			        <div class="menu-list">
-			  
-			            <ul id="menu-content" class="menu-content collapse out">
+			     <ul id="menu-content" class="menu-content collapse out">
 			                <li>
 			                  <a href="dsNhanVien">
-			                  <i class="fa fa-dashboard fa-lg"></i> Nhân viên
+			                 <i class="fa fa-user" aria-hidden="true"></i> Nhân viên
 			                  </a>
 			                </li>
 			
 			                <li >
-			                  <a href="dsPhong"><i class="fa fa-gift fa-lg"></i> Phòng </a>
+			                  <a href="dsPhong"><i class="fa fa-home" aria-hidden="true"></i> Phòng </a>
 			                </li>
 			               
 			
 			
 			                <li>
-			                  <a href="dsKhachHang"><i class="fa fa-globe fa-lg"></i> Khách hàng </a>
+			                   <a href="dsKhachHang"><i class="fa fa-user-plus" aria-hidden="true"></i> Khách hàng </a>
 			                </li>  
 			             
 			
 			
 			                <li>
-			                  <a href="dsDichVu"><i class="fa fa-car fa-lg"></i> Dịch vụ </a>
+			                  <a href="dsDichVu"><i class="fa fa-id-card" aria-hidden="true"></i> Dịch vụ </a>
 			                </li>
 			                
 			                 <li>
-			                  <a href="#"><i class="fa fa-car fa-lg"></i> Hóa đơn </a>
+			                  <a href="#"><i class="fa fa-money" aria-hidden="true"></i></i> Hóa đơn </a>
 			                </li>
 			                
 			                 <li>
-			                  <a href="#"><i class="fa fa-car fa-lg"></i> Thuê phòng </a>
+			                  <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> Thuê phòng </a>
 			                </li>
+			                 <li  data-toggle="collapse" data-target="#products" class="collapsed active">
+			                  <a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i> Báo cáo<span class="arrow"></span></a>
+			                </li>
+			                	<ul class="sub-menu collapse" id="products">
+				                    <li><a href="#">Dịch vụ</a></li>
+				                    <li><a href="#">Thuê phòng</a></li>
+				                  			                    
+				                </ul>
+				                
 			                  <li>
-			                  <a href="login.jsp"><i class="fa fa-car fa-lg"></i> Đăng xuất </a>
+			                  <a href="login.jsp"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a>			       
 			                </li>
+			                     
 			               
 			            </ul>
 			     </div>
