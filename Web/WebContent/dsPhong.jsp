@@ -57,7 +57,7 @@
 			                </li>
 			                
 			                 <li>
-			                  <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> Thuê phòng </a>
+			                  <a href="dsThuePhong"><i class="fa fa-bed" aria-hidden="true"></i> Thuê phòng </a>
 			                </li>
 			                 <li  data-toggle="collapse" data-target="#products" class="collapsed active">
 			                  <a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i> Báo cáo<span class="arrow"></span></a>
@@ -88,7 +88,7 @@
 		      <div class="col-sm-3 col-xs-12">
 			      	 <div class="form-group">
 			      	<label>Mã phòng:</label>
-			      	<input type ="text" name="maphong" value='${phong.getMaPhong()}' ></input>
+			      	<input type ="text" class="form-control" name="maphong" value='${phong.getMaPhong()}' ></input>
 			      	</div>
 		      </div>
 	    
@@ -97,7 +97,7 @@
 			      	
 			      	<div class="form-group">
 			      	<label>Loại phòng:</label>
-			      	<input type ="text" name="loaiphong" value='${phong.getLoaiPhong()}'></input>
+			      	<input type ="text"  class="form-control" name="loaiphong" value='${phong.getLoaiPhong()}'></input>
 			      	</div>
 		      </div>
 	  
@@ -106,7 +106,7 @@
 			      	
 			      	<div class="form-group">
 			      	<label>Giá phòng:</label>
-			      	<input type ="number" name="giaphong" value='${phong.getGiaPhong()}'></input>
+			      	<input type ="number"  class="form-control" name="giaphong" value='${phong.getGiaPhong()}'></input>
 			      	</div>
 		      </div>
 		

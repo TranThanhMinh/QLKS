@@ -56,7 +56,7 @@
 			                </li>
 			                
 			                 <li>
-			                  <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> Thuê phòng </a>
+			                  <a href="dsThuePhong"><i class="fa fa-bed" aria-hidden="true"></i> Thuê phòng </a>
 			                </li>
 			                 <li  data-toggle="collapse" data-target="#products" class="collapsed active">
 			                  <a href="#"><i class="fa fa-pie-chart" aria-hidden="true"></i> Báo cáo<span class="arrow"></span></a>
@@ -86,11 +86,11 @@
 			  <div class="col-sm-3 col-xs-12">
 			  <div class="form-group">
 			   <label>Mã khách hàng:</label>
-			     <input type ="text" name="makh" value='${nv.getMaNV()}'  ></input>
+			     <input type ="text"  class="form-control"  name="makh" value='${nv.getMaNV()}'  ></input>
 			  </div>
 			   <div class="form-group">
 				   <label>Họ và tên khách hàng:</label>
-				  	<input type ="text"  name="tenkh" value='${nv.getHoTenNV()}'></input>
+				  	<input type ="text"  class="form-control"  name="tenkh" value='${nv.getHoTenNV()}'></input>
 				</div>
 				
 		      
@@ -99,11 +99,11 @@
 			  <div class="col-sm-3 col-xs-12">
 			   <div class="form-group">
 				   <label>Ngày sinh:</label>
-				   <input type ="text"  name="ns" value='${nv.getNgaySinh()}'></input>
+				   <input type ="text"  class="form-control"  name="ns" value='${nv.getNgaySinh()}'></input>
 		      	</div>
 			  	<div class="form-group">
 				   <label>Giới tính:</label>
-				    	<input type ="text"   name="gt" value='${nv.getGioiTinh()}'></input>
+				    	<input type ="text"  class="form-control"  name="gt" value='${nv.getGioiTinh()}'></input>
 		      	</div>
 			  
 	      		 
@@ -112,11 +112,11 @@
 			  <div class="col-sm-3 col-xs-12">
 			   <div class="form-group">
 			   	<label>Số chứng minh thư:</label>
-					<input type ="number"  name="scmt" value='${nv.getSoCMT()}'></input>
+					<input type ="number"  class="form-control"  name="scmt" value='${nv.getSoCMT()}'></input>
 		       </div>
 				  <div class="form-group">
 				  	 <label>Số điện thoại:</label>
-				     <input type ="text"  name="sdt" value='${nv.getSoDT()}'></input>
+				     <input type ="text"  class="form-control" name="sdt" value='${nv.getSoDT()}'></input>
 	      		</div>
 		
 			  </div>
