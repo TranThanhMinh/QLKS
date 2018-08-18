@@ -1,65 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 4 DatePicker</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div class="container py-5">
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="text-center text-white mb-4">Bootstrap 4 Login Form</h2>
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-
-                    <!-- form card login -->
-                    <div class="card rounded-0">
-                        <div class="card-header">
-                            <h3 class="mb-0">Đăng nhập</h3>
-                        </div>
-              
-                        <div class="card-body">
-                            <form class="form" role="form" action="login"  autocomplete="off" id="formLogin" novalidate="" method="POST">
-                                <div class="form-group">
-                                    <label for="uname1">Tài khoản</label>
-                                    <input type="text" class="form-control form-control-lg rounded-0" name="Taikhoan" id="uname1" required="">
-                                    <div class="invalid-feedback">Oops, you missed this one.</div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mật khẩu</label>
-                                    <input type="password" class="form-control form-control-lg rounded-0" id="Matkhau" required="" autocomplete="new-password">
-                                    <div class="invalid-feedback">Enter your password too!</div>
-                                </div>
-                                <div>
-                                    <label class="custom-control custom-checkbox">
-                                      <input type="checkbox" class="custom-control-input">
-                                      <span class="custom-control-indicator"></span>
-                                      <span class="custom-control-description small text-dark">Remember me on this computer</span>
-                                    </label>
-                                </div>
-                                 <input type="submit" name="Login" value="Login" class="btn btn-success btn-lg float-right"></input>
-                              
-                            </form>
-                        </div>
-                        <!--/card-block-->
-                    </div>
-                    <!-- /form card login -->
-
-                </div>
-
-
-            </div>
-            <!--/row-->
-
-        </div>
-        <!--/col-->
-    </div>
-    <!--/row-->
-</div>
-<!--/container-->
+    <input id="datepicker" width="276" />
+    <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
 </body>
 </html>

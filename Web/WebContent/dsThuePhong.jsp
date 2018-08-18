@@ -15,6 +15,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Danh sách Phòng</title>
     <style> 
 </style>
@@ -89,7 +91,7 @@
 		      <div class="col-sm-3 col-xs-12">
 			      	 <div class="form-group">
 			      	<label>Mã thuê phòng:</label>
-			      	<input type ="text" name="matp" class="form-control" value='${dv.getMaDV()}' ></input>
+			      	<input type ="text" name="matp" class="form-control" value='${tp.getMaTP()}' ></input>
 			      	</div>
 			      	<div class="form-group">
 				      	<label>Loại phòng:</label>			      	
@@ -100,7 +102,7 @@
 						</select>
 			      	</div>
 			      	<div>
-			      		<input type ="hidden" id="phong"  name="maphong" value='${tenphong}'></input>
+			      		<input type ="hidden" id="phong"  name="maphong" value='${ph}'></input>
 			      	</div>
 		      </div>
 	      <div class="col-sm-3 col-xs-12">
@@ -114,18 +116,18 @@
 					</select>
 			      	</div>
 			      	<div>
-			      		<input type ="hidden" id="kh"  name="makh" value='${ma}'></input>
+			      		<input type ="hidden" id="kh"  name="makh" value='${kh}'></input>
 			      	</div>
 			      	<div class="form-group">
 				      	<label>Ngày đến:</label>
-				      	<input type ="date" name="ngayden" class="form-control" value='${dv.getGiaDV()}'></input>
+				      	<input type ="text" name="ngayden" class="form-control"  data-date-format="dd/mm/yyyy" id="datepickerden"  value='${den}'></input>
 			      	</div>
 			</div>
-	      
+
 	      	<div class="col-sm-3 col-xs-12">
 					<div class="form-group">
 				      	<label>Ngày đi:</label>
-				      	<input type ="date" name="ngaydi" class="form-control" value='${dv.getDVT()}'></input>
+				      	<input type ="text" name="ngaydi" class="form-control" data-date-format="dd/mm/yyyy" id="datepickerdi" value='${di}'></input>
 			      	</div>
 		      </div>
 	 
@@ -138,7 +140,7 @@
       </form>    
       </div>
       <div></br>
-     
+    
       
        <input class="form-control" id="myInput" type="text" placeholder="Tìm theo mã, loại, giá phòng....">
    		 <br>
@@ -167,7 +169,7 @@
 		                <a class="fa fa-edit" href="updatePhong?action=editTP&matp=${p.getMaTP()}"></a>
 		             </td>
 		             <td>
-		                <a class="fa fa-remove" href="Delete?action=editTP&mat=${p.getMaTP()}"></a>
+		                <a class="fa fa-remove" href="Delete?action=editTP&matp=${p.getMaTP()}"></a>
 		             </td>
 		          </tr>
 		          </tbody>
@@ -225,6 +227,16 @@ $(document).ready(function(){
     });
   });
 });
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript">
+  	
+    $('#datepickerden').datepicker();
+    $('#datepickerdi').datepicker();
 </script>
  </body>
 </html>
