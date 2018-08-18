@@ -51,22 +51,22 @@ public class insertThuePhong extends HttpServlet {
 	         String queryString = "select * from THUEPHONG where MaTP= '"+matp+"'";	     
 	         ResultSet rs = statement.executeQuery(queryString);		    		      
 	            if(rs.next()) {           	           
-//	       		 String update = "update DICHVU set TenDV= ?, GiaDV= ?, MaNV= ?, DVT= ?  where MaDV= ?";
-//	       	        PreparedStatement ps;
-//	       			try {
-//	       				ps = new Connect().getConnect().prepareStatement(update);
-//	       				ps.setString(1,tendv);	
-//	     		        ps.setString(2,giadv);	 
-//	       				ps.setString(3,manv[0]);	    
-//	       				ps.setString(4,dvt);	   
-//	       				ps.setString(5,madv);	  	  
-//	       			    ps.executeUpdate();
-//	       			            			      	       		       
-//	       			} catch (SQLException e) {
-//	       				// TODO Auto-generated catch block
-//	       				e.printStackTrace();
-//	       			}
-//	       			 response.sendRedirect("dsDichVu");	
+	       		 String update = "update THUEPHONG set MaPhong= ?, MaKH= ?, NgayDen= ?, NgayDi= ?  where MaTP= ?";
+	       	        PreparedStatement ps;
+	       			try {
+	       				ps = new Connect().getConnect().prepareStatement(update);
+	       				ps.setString(1,phong[0]);	
+	     		        ps.setString(2,kh[0]);	 
+	       				ps.setString(3,ngayden);	    
+	       				ps.setString(4,ngaydi);	   
+	       				ps.setString(5,matp);	  	  
+	       			    ps.executeUpdate();
+	       			            			      	       		       
+	       			} catch (SQLException e) {
+	       				// TODO Auto-generated catch block
+	       				e.printStackTrace();
+	       			}
+	       			 response.sendRedirect("dsThuePhong");	
 	                // Forward sang /WEB-INF/views/productListView.jsp	                  
 	            }	else {
 	            	try {

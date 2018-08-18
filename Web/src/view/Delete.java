@@ -105,6 +105,7 @@ public class Delete extends HttpServlet {
 			String makh = request.getParameter("matp");
 			 String delete = "delete from THUEPHONG where MaTP= ?";
 		        PreparedStatement ps;
+		        System.out.print(makh);
 				try {
 					ps = new Connect().getConnect().prepareStatement(delete);
 					   ps.setString(1,makh);	    	     

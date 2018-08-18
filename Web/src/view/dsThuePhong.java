@@ -82,21 +82,26 @@ public class dsThuePhong extends HttpServlet {
 	         String queryString = "select a.*, c.TenKH,c.SoCMT,b.LoaiPhong from THUEPHONG a inner join PHONG b  on a.MaPhong = b.MaPhong " + 
 	         		"inner join KHACHHANG c   on a.MaKH = c.MaKH";
 	         list= new ArrayList<>();
-	        ResultSet rs = statement.executeQuery(queryString);		       
-     		DateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-     		DateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
-     		Date date = null;
+	        ResultSet rs = statement.executeQuery(queryString);		
+	        String den = null,di = null;
+     		DateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+     		den = sdf1.format(new Date());
+     		di = sdf1.format(new Date());
+     		System.out.println(den+" "+di);
+     		//DateFormat sdf2 = new SimpleDateFormat("MM/dd/yyyy");
+     		//Date date = null;
 	            while(rs.next()) { 
 	            	ThuePhong p = new ThuePhong();
 	            	p.setMaTP(rs.getString(1));
 	            	p.setMaKH(rs.getString(2));
 	            	p.setMaPhong(rs.getString(3));	            
-	            	date =sdf1.parse(rs.getString(4));
-	            	String den = sdf2.format(date);
-	            	date =sdf1.parse(rs.getString(5));
-	            	String di = sdf2.format(date);	
-	            	p.setNgayDen(den);
-	            	p.setNgayDi(di);
+	            	//date =sdf1.parse(rs.getString(4));
+	            	//String den = sdf2.format(date);
+	            	//date =sdf1.parse(rs.getString(5));
+	            	//String di = sdf2.format(date);	
+	            	p.setNgayDen(rs.getString(4));
+	            	p.setNgayDi(rs.getString(5));
+	            
 	            	p.setTenKH(rs.getString(6));
 	            	p.setSoCMT(rs.getString(7));
 	            	p.setLoaiPhong(rs.getString(8));
@@ -108,6 +113,8 @@ public class dsThuePhong extends HttpServlet {
 	            request.setAttribute("dsKhachHang", new dsKhachHang().list);
 	            request.setAttribute("dsPhong", new dsPhong().list);
 	            request.setAttribute("name", "Thêm");
+	            request.setAttribute("den", den);
+	            request.setAttribute("di", di);
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsThuePhong.jsp");
                 dispatcher.forward(request, response);   
 	            

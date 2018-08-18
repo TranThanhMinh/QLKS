@@ -2,6 +2,7 @@ package view;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -86,6 +87,43 @@ public class updatePhong extends HttpServlet {
 					 request.setAttribute("name", "Sửa");
 					
 			            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsDichVu.jsp");
+		                dispatcher.forward(request, response); 
+				}
+			}
+		}
+		else if(action.equals("editTP")) {
+			String den=null,di=null;
+			String maphong =request.getParameter("matp");	
+			for(ThuePhong p:new dsThuePhong().list) {		
+				if(maphong.equals(p.getMaTP())) {				
+					 request.setAttribute("dsThuePhong", new dsThuePhong().list);
+					 den = p.getNgayDen();
+		            	di = p.getNgayDi();
+					 List<NhanVien> list_=new ArrayList<>();
+					 NhanVien nv = new NhanVien();
+					 nv.setMaNV(p.getMaKH());
+					 nv.setHoTenNV(p.getTenKH());
+					 list_.add(nv);
+					 list_.addAll(new dsKhachHang().list);
+					 
+					 List<Phong> listP=new ArrayList<>();
+					 Phong ph=new Phong();
+					 ph.setMaPhong(p.getMaPhong());
+					 ph.setLoaiPhong(p.getLoaiPhong());
+					 listP.add(ph);
+					 listP.addAll(new dsPhong().list);
+					 
+					 request.setAttribute("dsKhachHang", list_ );					
+					 request.setAttribute("dsPhong", listP );
+					 request.setAttribute("tp", p);
+					 request.setAttribute("date", new Date());
+					   request.setAttribute("den", den);
+			            request.setAttribute("di", di);
+					 request.setAttribute("kh", p.getMaKH()+" - "+p.getTenKH());
+					 request.setAttribute("ph", p.getMaPhong()+" - "+p.getLoaiPhong());
+					 request.setAttribute("name", "Sửa");
+					
+			            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsThuePhong.jsp");
 		                dispatcher.forward(request, response); 
 				}
 			}
