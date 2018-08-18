@@ -101,6 +101,23 @@ public class Delete extends HttpServlet {
 					e.printStackTrace();
 				}
 				 response.sendRedirect("dsDichVu");	
+		}else if(action.equals("editTP")) {
+			String makh = request.getParameter("matp");
+			 String delete = "delete from THUEPHONG where MaTP= ?";
+		        PreparedStatement ps;
+				try {
+					ps = new Connect().getConnect().prepareStatement(delete);
+					   ps.setString(1,makh);	    	     
+				        ps.executeUpdate();
+				        ps.close();
+				        new Connect().getConnect().commit();
+				       
+				       
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 response.sendRedirect("dsThuePhong");	
 		}
 	}
 

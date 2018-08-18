@@ -71,8 +71,7 @@ public class updatePhong extends HttpServlet {
 		}else if(action.equals("editDV")) {
 			String maphong =request.getParameter("madv");	
 			for(DichVu p:new dsDichVu().list) {		
-				if(maphong.equals(p.getMaDV())) {	
-					new dsNhanVien().list.remove(p);
+				if(maphong.equals(p.getMaDV())) {				
 					 request.setAttribute("dsDichVu", new dsDichVu().list);
 					 List<NhanVien> list_=new ArrayList<>();
 					 NhanVien nv = new NhanVien();
