@@ -187,14 +187,18 @@
      //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
      $("#save").validate({
          rules: {
-             maphong: "required",
-             loaiphong: "required",
-             giaphong:"required",
+             madv: "required",
+             tendv: "required",
+             giadv:"required",
+             dvt:"required",
+             tennv:"required"
          },
          messages: {
-        	 maphong: "Vui lòng nhập mã phòng",
-        	 loaiphong: " Vui lòng nhập loại phòng",
-             giaphong:  " Vui lòng nhập giá phòng",
+        	 madv: "Vui lòng nhập mã dịch vụ",
+        	 tendv: " Vui lòng nhập tên dịch vụ",
+        	 giadv:  " Vui lòng nhập giá dịch vụ",
+        	 dvt:  " Vui lòng nhập đơn vị tính",
+        	 tennv:  " Vui lòng chọn nhân viên",
              
          }
      });

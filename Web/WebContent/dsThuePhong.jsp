@@ -27,7 +27,7 @@
     <div class="row">
     <div class="col-sm-2 bac">
     	 <div class="nav-side-menu">
-			   <div class="brand">Quản lý thuê phòng</div> 
+			   <div class="brand">Quản lý khách sạn</div> 
 			    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 			  
 			        <div class="menu-list">
@@ -152,6 +152,7 @@
 		          <th>Số CMT</th>
 		           <th>Ngày đến</th>
 		           <th>Ngày đi</th>
+		           <th>Dịch vụ</th>
 		          <th>Sửa</th>
 		          <th>Xóa</th>
 		       </tr>
@@ -164,6 +165,10 @@
 		             <td >${p.getSoCMT()}</td>
 		             <td >${p.getNgayDen()}</td>
 		             <td >${p.getNgayDi()}</td>
+		             <td>
+		            
+		                <a class="fa fa-id-card"  href="dsUseDichVu?makh=${p.getMaKH()}&tenkh=${p.getTenKH()}"></a>
+		             </td>
 		             <td>
 		            
 		                <a class="fa fa-edit" href="updatePhong?action=editTP&matp=${p.getMaTP()}"></a>
