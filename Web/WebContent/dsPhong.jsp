@@ -53,7 +53,7 @@
 			                </li>
 			                
 			                 <li>
-			                  <a href="#"><i class="fa fa-money" aria-hidden="true"></i></i> Hóa đơn </a>
+			                  <a href="dsHoaDon"><i class="fa fa-money" aria-hidden="true"></i></i> Hóa đơn </a>
 			                </li>
 			                
 			                 <li>
@@ -88,7 +88,7 @@
 		      <div class="col-sm-3 col-xs-12">
 			      	 <div class="form-group">
 			      	<label>Mã phòng:</label>
-			      	<input type ="text" class="form-control" name="maphong" value='${phong.getMaPhong()}' ></input>
+			      	<input type ="text" class="form-control" name="maphong" value='${maphong}' ></input>
 			      	</div>
 		      </div>
 	    

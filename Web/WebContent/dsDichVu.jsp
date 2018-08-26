@@ -53,7 +53,7 @@
 			                </li>
 			                
 			                 <li>
-			                  <a href="#"><i class="fa fa-money" aria-hidden="true"></i></i> Hóa đơn </a>
+			                  <a href="dsHoaDon"><i class="fa fa-money" aria-hidden="true"></i></i> Hóa đơn </a>
 			                </li>
 			                
 			                 <li>
@@ -88,7 +88,7 @@
 		      <div class="col-sm-3 col-xs-12">
 			      	 <div class="form-group">
 			      	<label>Mã dịch vụ:</label>
-			      	<input type ="text"  class="form-control"  name="madv" value='${dv.getMaDV()}' ></input>
+			      	<input type ="text"  class="form-control" disabled="disabled"  name="madv" value='${madv}' ></input>
 			      	</div>
 			      		<div class="form-group">
 			      	<label>Tên dịch vụ:</label>

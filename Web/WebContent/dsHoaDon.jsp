@@ -27,7 +27,7 @@
     <div class="row">
     <div class="col-sm-2 bac">
     	 <div class="nav-side-menu">
-			    <div class="brand">Quản lý khách sạn</div> 
+			   <div class="brand">Quản lý khách sạn</div> 
 			    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 			  
 			        <div class="menu-list">
@@ -40,7 +40,10 @@
 			
 			                <li >
 			                  <a href="dsPhong"><i class="fa fa-home" aria-hidden="true"></i> Phòng </a>
-			                </li>			
+			                </li>
+			               
+			
+			
 			                <li>
 			                   <a href="dsKhachHang"><i class="fa fa-user-plus" aria-hidden="true"></i> Khách hàng </a>
 			                </li>  
@@ -80,42 +83,53 @@
     <div class="col-sm-10">
  
      <div>
-     <h4>Danh sách sử dụng dịch vụ - ${tenkh}</h4></div>   
-      
+     <h4>Danh sách thuê phòng</h4></div>    
      <div id="sizetext" >
-      
-      <form action="insertUseDichVu" method="post" id="save">    
+      <form action="insertHD" method="post" id="save">    
       <div class="row">
-	      
-		      <div class="col-sm-3 col-xs-12">
-			      			      	
+	       <div class="col-sm-3 col-xs-12">
+			      	 <div class="form-group">
+			      	<label>Mã hóa đơn:</label>
+			      	<input type ="text"  class="form-control" disabled="disabled" value='${ma}' ></input>
+			      	</div>
+			      		<div>
+			      		<input type ="hidden" id="mahd"  name="mahd" value='${ma}'></input>
+			      	</div>
+			      	
+		      </div>
+		       <div class="col-sm-3 col-xs-12">
+			      	
 			      	<div class="form-group">
-				      	<label>Dịch vụ:</label>			      	
-				        <select id="selectDV" class="selectpicker col form-control" onchange="changeFunc();">
-				          <c:forEach items="${dsDichVu}" var="p" >
-							  <option name='${p.getMaDV()}' >${p.getMaDV()} - ${p.getTenDV()}</option>
+			      	<label>Khách hàng:</label>			      	
+			        <select id="selectKH" class="selectpicker col form-control" onchange="changeFuncKH();">
+			          <c:forEach items="${dsKhachHang}" var="p" >
+						  <option name='${p.getMaNV()}' >${p.getMaNV()} - ${p.getHoTenNV()}</option>
+					 </c:forEach>
+					</select>
+			      	</div>
+			      	<div>
+			      		<input type ="hidden" id="kh"  name="tenkh" value='${tenkh}'></input>
+			      	</div>
+			      	
+			</div>
+		      <div class="col-sm-3 col-xs-12">
+			      	 
+			      	<div class="form-group">
+				      	<label>Nhân viên:</label>			      	
+				        <select id=selectNV class="selectpicker col form-control" onchange="changeFuncNV();">
+				          <c:forEach items="${dsNhanVien}" var="p" >
+							  <option name='${p.getMaNV()}' >${p.getMaNV()} - ${p.getHoTenNV()}</option>
 						 </c:forEach>
 						</select>
 			      	</div>
 			      	<div>
-			      		<input type ="hidden" id="dv"  name="madv" value='${madv}'></input>
-			      		<input type ="hidden"   name="makh" value='${makh}'></input>
-			      		<input type ="hidden"   name="tenkh" value='${tenkh}'></input>
+			      		<input type ="hidden" id="nv"  name="tennv" value='${tennv}'></input>
 			      	</div>
 		      </div>
-	      <div class="col-sm-3 col-xs-12">
-			      	
-			      	<div class="form-group">
-				      	<label>Số lượng:</label>
-				      	<input type ="text" name="soluong" class="form-control"  value='${di}'></input>
-			      	</div>
-			      
-			</div>
-
-	      	
-	 
-		 
-		
+		      
+		     
+	     
+ 
       </div>
        
 
@@ -125,38 +139,39 @@
       <div></br>
     
       
-       <input class="form-control" id="myInput" type="text" placeholder="Tìm theo tên dịch vụ....">
+       <input class="form-control" id="myInput" type="text" placeholder="Tìm theo mã, loại, giá phòng....">
    		 <br>
 		    <table id="table" class="table table-bordered" >
 		       <tr>		      
-		          <th>Tên dịch vụ</th>
-		          <th>Giá dịch vụ</th>
-		          <th>Số lượng</th>
-		           <th>Thời gian</th>		          
+		          <th>Mã hóa đơn</th>		     
+		          <th>Tên khách hàng</th>
+		          <th>Ngày lập hóa đơn</th>
+		           <th>Nhân viên</th>
+		          <th>Chi tiết</th>
 		          <th>Sửa</th>
 		          <th>Xóa</th>
 		       </tr>
-		       <c:forEach items="${dsUseDichVu}" var="p" >
+		       <c:forEach items="${dsHoaDon}" var="p" >
 		        <tbody id="myTable">
 		          <tr>
-		             <td >${p.getTenDV()}</td>
-		              <td >${p.getGiaDV()}</td>
-		             <td >${p.getSoLuong()}</td>
-		             <td >${p.getNgayGio()}</td>
-		        
-		            
-		             <td>
-		            
-		                <a class="fa fa-edit" href="updatePhong?action=editTP&matp=${p.getMaKH()}"></a>
+		             <td >${p.getMaHD()}</td>
+		             <td >${p.getMaKH()} - ${p.getTenKH()}</td>		       
+		             <td >${p.getNgayLapHD()}</td>
+		           <td >${p.getMaNV()} - ${ p.getHoTenNV()}</td>
+		            <td>		           
+		                <a href="updatePhong?matp=${p.getMaHD()}"> Xem</a>
 		             </td>
 		             <td>
-		                <a class="fa fa-remove" href="Delete?action=editTP&matp=${p.getMaKH()}"></a>
+		            
+		                <a class="fa fa-edit" href="updatePhong?action=editHD&mahd=${p.getMaHD()}"></a>
+		             </td>
+		             <td>
+		                <a class="fa fa-remove" href="Delete?action=editHD&mahd=${p.getMaHD()}"></a>
 		             </td>
 		          </tr>
 		          </tbody>
 		       </c:forEach>
 		    </table>
-		    <div><b>Tổng tiền:</b> ${money} vnd</div>
     </div>
  
     </div>
@@ -165,11 +180,15 @@
     </div>
   
 <script type="text/javascript">
-	 
-	   function changeFunc() {
-		    var selectBox = document.getElementById("selectDV");
+	   function changeFuncNV() {
+	    var selectBox = document.getElementById("selectNV");
+	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+	    document.getElementById("nv").value=selectedValue;
+	   }
+	   function changeFuncKH() {
+		    var selectBox = document.getElementById("selectKH");
 		    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-		    document.getElementById("dv").value=selectedValue;
+		    document.getElementById("kh").value=selectedValue;
 		   }
  </script>
 
@@ -179,15 +198,14 @@
 	 
      //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
      $("#save").validate({
-         rules: {
-             maphong: "required",
-             loaiphong: "required",
-             giaphong:"required",
+         rules: {           
+        	 tennv: "required",
+        	 tenkh:"required"
          },
          messages: {
-        	 maphong: "Vui lòng nhập mã phòng",
-        	 loaiphong: " Vui lòng nhập loại phòng",
-             giaphong:  " Vui lòng nhập giá phòng",
+        
+        	 tennv: " Vui lòng nhập loại phòng",
+        	 tenkh:  " Vui lòng nhập giá phòng"
              
          }
      });

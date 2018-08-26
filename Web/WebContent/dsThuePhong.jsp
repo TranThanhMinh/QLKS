@@ -55,7 +55,7 @@
 			                </li>
 			                
 			                 <li>
-			                  <a href="#"><i class="fa fa-money" aria-hidden="true"></i></i> Hóa đơn </a>
+			                  <a href="dsHoaDon"><i class="fa fa-money" aria-hidden="true"></i></i> Hóa đơn </a>
 			                </li>
 			                
 			                 <li>
@@ -91,7 +91,7 @@
 		      <div class="col-sm-3 col-xs-12">
 			      	 <div class="form-group">
 			      	<label>Mã thuê phòng:</label>
-			      	<input type ="text" name="matp" class="form-control" value='${tp.getMaTP()}' ></input>
+			      	<input type ="text" name="matp" disabled="disabled" class="form-control" value='${matp}' ></input>
 			      	</div>
 			      	<div class="form-group">
 				      	<label>Loại phòng:</label>			      	
