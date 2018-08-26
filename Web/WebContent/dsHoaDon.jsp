@@ -91,6 +91,7 @@
 			      	 <div class="form-group">
 			      	<label>Mã hóa đơn:</label>
 			      	<input type ="text"  class="form-control" disabled="disabled" value='${ma}' ></input>
+			      	
 			      	</div>
 			      		<div>
 			      		<input type ="hidden" id="mahd"  name="mahd" value='${ma}'></input>

@@ -88,7 +88,9 @@
 		      <div class="col-sm-3 col-xs-12">
 			      	 <div class="form-group">
 			      	<label>Mã dịch vụ:</label>
-			      	<input type ="text"  class="form-control" disabled="disabled"  name="madv" value='${madv}' ></input>
+			      	<input type ="text"  class="form-control"  disabled="disabled"  name="madv" value='${madv}' ></input>
+			      		<input type ="hidden"  class="form-control"  name="madv" value='${madv}' ></input>
+			      
 			      	</div>
 			      		<div class="form-group">
 			      	<label>Tên dịch vụ:</label>

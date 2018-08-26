@@ -86,7 +86,9 @@
 			  <div class="col-sm-3 col-xs-12">
 			  <div class="form-group">
 			   <label>Mã nhân viên:</label>
-			     <input type ="text"  class="form-control" name="manv" value='${manv}' ></input>
+			     <input type ="text"  class="form-control" disabled="disabled"  value='${manv}' ></input>
+			          <input type ="hidden"  class="form-control" name="manv" value='${manv}' ></input>
+			
 			  </div>
 			   <div class="form-group">
 				   <label>Họ và tên nhân viên:</label>

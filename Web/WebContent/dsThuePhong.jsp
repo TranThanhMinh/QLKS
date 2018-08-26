@@ -91,7 +91,8 @@
 		      <div class="col-sm-3 col-xs-12">
 			      	 <div class="form-group">
 			      	<label>Mã thuê phòng:</label>
-			      	<input type ="text" name="matp" disabled="disabled" class="form-control" value='${matp}' ></input>
+			      	<input type ="text"  disabled="disabled" class="form-control" value='${matp}' ></input>
+			      	<input type ="hidden" name="matp"  class="form-control" value='${matp}' ></input>
 			      	</div>
 			      	<div class="form-group">
 				      	<label>Loại phòng:</label>			      	
@@ -149,10 +150,10 @@
 		          <th>Mã thuê thòng</th>
 		          <th>Phòng</th>
 		          <th>Tên khách hàng</th>
-		          <th>Số CMT</th>
+		          <th>Số chứng minh thư</th>
 		           <th>Ngày đến</th>
 		           <th>Ngày đi</th>
-		           <th>Dịch vụ</th>
+		           
 		          <th>Sửa</th>
 		          <th>Xóa</th>
 		       </tr>
@@ -165,10 +166,7 @@
 		             <td >${p.getSoCMT()}</td>
 		             <td >${p.getNgayDen()}</td>
 		             <td >${p.getNgayDi()}</td>
-		             <td>
-		            
-		                <a class="fa fa-id-card"  href="dsUseDichVu?makh=${p.getMaKH()}&tenkh=${p.getTenKH()}"></a>
-		             </td>
+		           
 		             <td>
 		            
 		                <a class="fa fa-edit" href="updatePhong?action=editTP&matp=${p.getMaTP()}"></a>

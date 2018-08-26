@@ -86,7 +86,9 @@
 			  <div class="col-sm-3 col-xs-12">
 			  <div class="form-group">
 			   <label>Mã khách hàng:</label>
-			     <input type ="text"  class="form-control"   name="makh" value='${mak}'  ></input>
+			     <input type ="text"  class="form-control" disabled="disabled"  value='${mak}'  ></input>
+			       <input type ="hidden"  class="form-control"   name="makh" value='${mak}'  ></input>
+			
 			  </div>
 			   <div class="form-group">
 				   <label>Họ và tên khách hàng:</label>

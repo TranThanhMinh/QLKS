@@ -88,7 +88,9 @@
 		      <div class="col-sm-3 col-xs-12">
 			      	 <div class="form-group">
 			      	<label>Mã phòng:</label>
-			      	<input type ="text" class="form-control" name="maphong" value='${maphong}' ></input>
+			      	<input type ="text" class="form-control" disabled="disabled"  value='${maphong}' ></input>
+			      		<input type ="hidden" class="form-control" name="maphong" value='${maphong}' ></input>
+			      
 			      	</div>
 		      </div>
 	    
