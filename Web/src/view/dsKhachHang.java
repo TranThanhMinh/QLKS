@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class dsKhachHang extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static List<NhanVien> list;
+	private String ma="";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,12 +47,17 @@ public class dsKhachHang extends HttpServlet {
 	            	p.setGioiTinh(rs.getString(4));	
 	            	p.setSoCMT(rs.getString(5));		            
 	            	p.setSoDT(rs.getString(6));		            
-	            	
+	            	ma= rs.getString(1);
 	            	list.add(p);
 	                // Forward sang /WEB-INF/views/productListView.jsp	                  
-	            }		            
+	            }	
+	            if(ma.equals("")) {
+	            	ma="KH0";
+	            }
+	            String[] MaKH =ma.split("KH");
 	            request.setAttribute("dsKhachHang", list);
 	            request.setAttribute("name", "Thêm");
+	            request.setAttribute("mak", "KH"+(Integer.parseInt(MaKH[1])+1));
 	            request.setAttribute("disabled", "true");
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsKhachHang.jsp");
                 dispatcher.forward(request, response);   

@@ -119,6 +119,24 @@ public class Delete extends HttpServlet {
 					e.printStackTrace();
 				}
 				 response.sendRedirect("dsThuePhong");	
+		}else if(action.equals("editHD")) {
+			String makh = request.getParameter("mahd");
+			 String delete = "delete from HOADON where MaHD= ?";
+		        PreparedStatement ps;
+		        System.out.print(makh);
+				try {
+					ps = new Connect().getConnect().prepareStatement(delete);
+					   ps.setString(1,makh);	    	     
+				        ps.executeUpdate();
+				        ps.close();
+				        new Connect().getConnect().commit();
+				       
+				       
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 response.sendRedirect("dsHoaDon");	
 		}
 	}
 

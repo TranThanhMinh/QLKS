@@ -14,17 +14,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class dsPhong
+ * Servlet implementation class dsHoaDon
  */
-@WebServlet("/dsDichVu")
-public class dsDichVu extends HttpServlet {
+@WebServlet("/dsHoaDon")
+public class dsHoaDon extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static List<DichVu> list;
-	private String ma="";
+	public static List<HoaDon> list;
+	private String mahd="";
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public dsDichVu() {
+    public dsHoaDon() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -63,31 +63,58 @@ public class dsDichVu extends HttpServlet {
 	        }
 		try {
 			 Statement statement = new Connect().getConnect().createStatement();
-	         String queryString = "select a.*,b.HoTenNV from DICHVU a inner join NHANVIEN b on a.MaNV = b.MaNV";
+	         String queryString = "select * from KHACHHANG kh left join HOADON hd on kh.MaKH = hd.MaKH inner join THUEPHONG tp on kh.MaKH = tp.MaKH where hd.MaKH is  null";
+	         new dsKhachHang().list= new ArrayList<>();
+	         ResultSet rs = statement.executeQuery(queryString);
+	         NhanVien nv=  new NhanVien();
+	        		 nv.setMaNV("0");
+	        		 nv.setHoTenNV("Chọn khách hàng");
+	     	new dsKhachHang().list.add(nv);
+	            while(rs.next()) {           
+	            	NhanVien p = new NhanVien();
+	            	p.setMaNV(rs.getString(1));
+	            	p.setHoTenNV(rs.getString(2));
+	            	p.setNgaySinh(rs.getString(3));	     
+	            	p.setGioiTinh(rs.getString(4));	
+	            	p.setSoCMT(rs.getString(5));		            
+	            	p.setSoDT(rs.getString(6));		  
+	            	new dsKhachHang().list.add(p);
+	                // Forward sang /WEB-INF/views/productListView.jsp	                  
+	            }		            	          
+	         
+			} catch (Exception ex) {
+	            ex.printStackTrace();
+	        }
+		try {
+			 Statement statement = new Connect().getConnect().createStatement();
+	         String queryString = "select hd.*,kh.TenKH,nv.HoTenNV from HOADON hd inner join KHACHHANG kh on hd.MaKH = kh.MaKH inner join NHANVIEN nv on hd.MaNV = nv.MaNV";
 	         list= new ArrayList<>();
-	         ResultSet rs = statement.executeQuery(queryString);		    		      
+	         ResultSet rs = statement.executeQuery(queryString);
+	        
 	            while(rs.next()) { 
-	            	DichVu p = new DichVu();
-	            	p.setMaDV(rs.getString(1));
-	            	p.setTenDV(rs.getString(2));
-	            	p.setGiaDV(rs.getString(3));
+	            	HoaDon p = new HoaDon();
+	            	p.setMaHD(rs.getString(1));
+	            	p.setMaKH(rs.getString(2));
+	            	p.setNgayLapHD(rs.getString(3));
 	            	p.setMaNV(rs.getString(4));
-	            	p.setDVT(rs.getString(5));
-	            	p.setTenNV(rs.getString(6));
-	            	ma =rs.getString(1);
+	            	p.setTenKH(rs.getString(5));
+	            	p.setHoTenNV(rs.getString(6));
+	            	mahd = rs.getString(1);
+	            
 	            	list.add(p);
 	                // Forward sang /WEB-INF/views/productListView.jsp	                  
-	            }	
-	            if(ma.equals("")) {
-	            	ma = "DV0";
-	            }
-	            String[] madv = ma.split("DV");
-	          
-	            request.setAttribute("dsDichVu", list);
+	            	
+	         }
+	            if(mahd.equals("")){
+	        	 mahd ="HD-0";
+	         }
+	            String[] hd =mahd.split("-");	       
+	            request.setAttribute("dsHoaDon", list);
 	            request.setAttribute("dsNhanVien", new dsNhanVien().list);
+	            request.setAttribute("dsKhachHang", new dsKhachHang().list);
 	            request.setAttribute("name", "Thêm");
-	            request.setAttribute("madv", "DV"+(Integer.parseInt(madv[1])+1));
-	            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsDichVu.jsp");
+	            request.setAttribute("ma", hd[0]+"-"+(Integer.parseInt(hd[1])+1));
+	            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsHoaDon.jsp");
                 dispatcher.forward(request, response);   
 	            
 			} catch (Exception ex) {

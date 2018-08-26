@@ -41,6 +41,7 @@ public class updatePhong extends HttpServlet {
 					 request.setAttribute("dsPhong", new dsPhong().list);
 					 request.setAttribute("phong", p);
 					 request.setAttribute("name", "Sửa");
+					 request.setAttribute("maphong",p.getMaPhong());
 			            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsPhong.jsp");
 		                dispatcher.forward(request, response); 
 				}
@@ -51,6 +52,7 @@ public class updatePhong extends HttpServlet {
 				if(maphong.equals(p.getMaNV())) {					
 					 request.setAttribute("dsNhanVien", new dsNhanVien().list);
 					 request.setAttribute("nv", p);
+					 request.setAttribute("manv", p.getMaNV());
 					 request.setAttribute("name", "Sửa");
 			            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsNhanVien.jsp");
 		                dispatcher.forward(request, response); 
@@ -64,6 +66,7 @@ public class updatePhong extends HttpServlet {
 					 request.setAttribute("dsKhachHang", new dsKhachHang().list);
 					 request.setAttribute("nv", p);
 					 request.setAttribute("name", "Sửa");
+					 request.setAttribute("mak",p.getMaNV());
 					 request.setAttribute("disabled", "disabled");
 			            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsKhachHang.jsp");
 		                dispatcher.forward(request, response); 
@@ -83,6 +86,7 @@ public class updatePhong extends HttpServlet {
 					
 					 request.setAttribute("dsNhanVien", list_ );
 					 request.setAttribute("dv", p);
+					 request.setAttribute("madv", p.getMaDV());
 					 request.setAttribute("ma", p.getMaNV()+" - "+p.getTenNV());
 					 request.setAttribute("name", "Sửa");
 					
@@ -119,11 +123,48 @@ public class updatePhong extends HttpServlet {
 					 request.setAttribute("date", new Date());
 					   request.setAttribute("den", den);
 			            request.setAttribute("di", di);
+			            request.setAttribute("matp", p.getMaTP());
 					 request.setAttribute("kh", p.getMaKH()+" - "+p.getTenKH());
 					 request.setAttribute("ph", p.getMaPhong()+" - "+p.getLoaiPhong());
 					 request.setAttribute("name", "Sửa");
 					
 			            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsThuePhong.jsp");
+		                dispatcher.forward(request, response); 
+				}
+			}
+		}
+		else if(action.equals("editHD")) {
+			
+			String ma;
+			String maphong =request.getParameter("mahd");	
+			for(HoaDon p:new dsHoaDon().list) {		
+				if(maphong.equals(p.getMaHD())) {	
+					ma = p.getMaHD();
+					 request.setAttribute("dsHoaDon", new dsHoaDon().list);			
+					 List<NhanVien> listNV=new ArrayList<>();
+					 NhanVien nv = new NhanVien();
+					 nv.setMaNV(p.getMaNV());
+					 nv.setHoTenNV(p.getHoTenNV());
+					 listNV.add(nv);
+					 listNV.addAll(new dsNhanVien().list);
+					 
+					 List<NhanVien> listKH=new ArrayList<>();
+					 NhanVien kh = new NhanVien();
+					 kh.setMaNV(p.getMaKH());
+					 kh.setHoTenNV(p.getTenKH());
+					 listKH.add(kh);
+					 listKH.addAll(new dsKhachHang().list);
+					 
+					 request.setAttribute("dsKhachHang", listKH );					
+					 request.setAttribute("dsNhanVien", listNV );
+					 request.setAttribute("ma", ma);
+				
+					 request.setAttribute("tenkh", p.getMaKH()+" - "+p.getTenKH());
+					 request.setAttribute("tennv", p.getMaNV()+" - "+p.getHoTenNV());
+					
+					 request.setAttribute("name", "Sửa");
+					
+			            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsHoaDon.jsp");
 		                dispatcher.forward(request, response); 
 				}
 			}

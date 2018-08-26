@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class dsPhong extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static List<Phong> list;
+	private String ma="";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -43,13 +44,18 @@ public class dsPhong extends HttpServlet {
 	            	p.setMaPhong(rs.getString(1));
 	            	p.setLoaiPhong(rs.getString(2));
 	            	p.setGiaPhong(rs.getString(3));
-	            	System.out.print(rs.getString(1)+"</br>");
+	            	ma=rs.getString(1);
 	            	list.add(p);
 	                // Forward sang /WEB-INF/views/productListView.jsp	                  
 	            }	
-	            
+	            if(ma.equals("")) {
+	            	ma="PH0";
+	            }
+	          
+	            String[] maphong = ma.split("PH");
 	            request.setAttribute("dsPhong", list);
 	            request.setAttribute("name", "Thêm");
+	            request.setAttribute("maphong","PH"+(Integer.parseInt(maphong[1])+1));
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsPhong.jsp");
                 dispatcher.forward(request, response);   
 	            

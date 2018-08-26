@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 public class dsThuePhong extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static List<ThuePhong> list;
+	private String ma="";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -105,14 +106,19 @@ public class dsThuePhong extends HttpServlet {
 	            	p.setTenKH(rs.getString(6));
 	            	p.setSoCMT(rs.getString(7));
 	            	p.setLoaiPhong(rs.getString(8));
-	            	
+	            	ma= rs.getString(1);
 	            	list.add(p);
 	                // Forward sang /WEB-INF/views/productListView.jsp	                  
-	            }		            
+	            }	
+	            if(ma.equals("")) {
+	            	ma="TP0";
+	            }
+	            String[] MaTP = ma.split("TP");
 	            request.setAttribute("dsThuePhong", list);
 	            request.setAttribute("dsKhachHang", new dsKhachHang().list);
 	            request.setAttribute("dsPhong", new dsPhong().list);
 	            request.setAttribute("name", "Thêm");
+	            request.setAttribute("matp", "TP"+(Integer.parseInt(MaTP[1])+1));
 	            request.setAttribute("den", den);
 	            request.setAttribute("di", di);
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsThuePhong.jsp");

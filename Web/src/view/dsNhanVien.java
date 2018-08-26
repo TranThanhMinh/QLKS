@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 public class dsNhanVien extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static List<NhanVien> list;
+	private String ma="";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -48,12 +49,17 @@ public class dsNhanVien extends HttpServlet {
 	            	p.setDiaChi(rs.getString(6));	
 	            	p.setSoDT(rs.getString(7));	
 	            	p.setChucVu(rs.getString(8));	
-	            	
+	            	ma=rs.getString(1);
 	            	list.add(p);
 	                // Forward sang /WEB-INF/views/productListView.jsp	                  
-	            }		            
+	            }		   
+	            if(ma.equals("")) {
+	            	ma="NV0";
+	            }
+	            String[] MaNV = ma.split("NV");
 	            request.setAttribute("dsNhanVien", list);
 	            request.setAttribute("name", "Thêm");
+	            request.setAttribute("manv", "NV"+(Integer.parseInt(MaNV[1])+1));
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("/dsNhanVien.jsp");
                 dispatcher.forward(request, response);   
 	            
